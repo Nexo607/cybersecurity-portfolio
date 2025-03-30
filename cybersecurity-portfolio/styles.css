@@ -1,0 +1,6 @@
+header h1 {
+    color: #ffffff; /* Ensures visibility */
+    font-size: 2em;
+    font-weight: bold;
+    text-transform: uppercase; /* Converts text to uppercase */
+}

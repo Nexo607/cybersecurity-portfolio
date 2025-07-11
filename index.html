@@ -2,38 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Prince Gupta | Bug Bounty & Cybersecurity Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- AOS Animation CSS -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- FontAwesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* Basic resets */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
       background-color: #000;
       color: #fff;
       scroll-behavior: smooth;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
     }
-    a { color: #00ffff; text-decoration: none; }
+
+    a {
+      color: #00ffff;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    a:hover,
+    a:focus {
+      color: #00ffcc;
+      outline: none;
+    }
+
     #vanta-bg {
       position: fixed;
-      width: 100%;
-      height: 100%;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       z-index: -1;
     }
+
     header {
       padding: 100px 20px 50px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
+
     header h1 {
       font-size: 48px;
       font-weight: 600;
+      color: #fff;
+      text-transform: uppercase;
     }
+
     header p {
       font-size: 18px;
       color: #00ffff;
       margin-top: 10px;
     }
+
     .cta {
       margin-top: 25px;
       display: inline-block;
@@ -42,24 +87,45 @@
       color: #000;
       font-weight: bold;
       border-radius: 6px;
-      transition: 0.3s;
+      transition: background 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+      user-select: none;
     }
-    .cta:hover {
+
+    .cta:hover,
+    .cta:focus {
       background: #00ffcc;
       transform: scale(1.05);
+      outline: none;
     }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 10px 0;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0, 255, 255, 0.15);
+    }
+
     nav ul {
       display: flex;
       justify-content: center;
       gap: 30px;
       list-style: none;
-      margin-top: 30px;
+      margin: 0 auto;
+      max-width: 900px;
     }
+
     nav ul li a {
       font-weight: 600;
       font-size: 16px;
       position: relative;
+      padding: 5px 8px;
+      border-radius: 4px;
     }
+
     nav ul li a::after {
       content: "";
       position: absolute;
@@ -69,48 +135,100 @@
       bottom: -5px;
       left: 0;
       transition: width 0.3s;
+      border-radius: 2px;
     }
-    nav ul li a:hover::after {
+
+    nav ul li a:hover::after,
+    nav ul li a:focus::after {
       width: 100%;
     }
-    section {
+
+    main {
       max-width: 900px;
       margin: 60px auto;
-      padding: 30px;
+      padding: 0 15px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
       background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(12px);
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0, 255, 255, 0.25);
+      padding: 30px;
+      margin-bottom: 60px;
     }
+
     section h2 {
       font-size: 28px;
       margin-bottom: 20px;
       color: #00ffff;
     }
-    .skills ul, .contact p, .halloffame ul {
+
+    .skills ul,
+    .contact p,
+    .halloffame ul {
       text-align: left;
       margin-left: 30px;
     }
+
     .project-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 30px;
     }
+
     .project-card {
       background: #111;
       border-radius: 10px;
       padding: 20px;
-      transition: 0.3s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 0 12px rgba(0, 255, 255, 0.1);
     }
-    .project-card:hover {
+
+    .project-card:hover,
+    .project-card:focus-within {
       transform: translateY(-5px);
       box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+      outline: none;
     }
+
     .project-card h4 {
       color: #00ffff;
       margin-bottom: 10px;
     }
+
+    .project-card p {
+      margin-bottom: 10px;
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
+    }
+
+    .project-card a.cta {
+      padding: 8px 15px;
+      font-size: 14px;
+      margin-top: 10px;
+      display: inline-block;
+      background: #00cccc;
+      color: #000;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .project-card a.cta:hover,
+    .project-card a.cta:focus {
+      background: #00ffff;
+      outline: none;
+    }
+
     footer {
       text-align: center;
       margin-top: 80px;
@@ -118,13 +236,42 @@
       background: #000;
       color: #aaa;
       font-size: 14px;
+      position: relative;
+      z-index: 1;
     }
+
+    footer p a {
+      color: #00ffff;
+      margin: 0 6px;
+      font-size: 18px;
+      vertical-align: middle;
+      transition: color 0.3s ease;
+    }
+
+    footer p a:hover,
+    footer p a:focus {
+      color: #00ffcc;
+      outline: none;
+    }
+
+    footer p:last-child {
+      margin-top: 10px;
+    }
+
     @media (max-width: 768px) {
       .project-grid {
         grid-template-columns: 1fr;
       }
       header h1 {
         font-size: 32px;
+      }
+      nav ul {
+        gap: 15px;
+        padding: 0 10px;
+        flex-wrap: wrap;
+      }
+      nav ul li {
+        margin-bottom: 5px;
       }
     }
   </style>
@@ -136,95 +283,117 @@
     <h1>Prince Gupta</h1>
     <p>Bug Bounty Hunter | OSINT Specialist | Cybersecurity Enthusiast</p>
     <a href="#portfolio" class="cta">Explore My Work</a>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#portfolio">Projects</a></li>
-        <li><a href="#halloffame">Hall of Fame</a></li>
-        <li><a href="#resume-download">Resume</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
   </header>
 
-  <section id="about" data-aos="fade-up">
-    <h2>About Me</h2>
-    <p>I’m a cybersecurity researcher focused on uncovering vulnerabilities through ethical hacking, bug bounty programs, and recon automation. I enjoy identifying risks before attackers can exploit them and turning findings into actionable insights.</p>
-  </section>
-
-  <section id="skills" class="skills" data-aos="fade-up" data-aos-delay="100">
-    <h2>Skills</h2>
+  <nav aria-label="Primary navigation">
     <ul>
-      <li>🕵️ Bug Bounty Hunting & Responsible Disclosure</li>
-      <li>🔐 Web & API Penetration Testing</li>
-      <li>🧠 OSINT & Recon Automation</li>
-      <li>🐧 Linux Security & Hardening</li>
-      <li>💻 Scripting: Python, Bash, Nmap, Burp Suite</li>
-      <li>📚 Exploit Development Basics</li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#portfolio">Projects</a></li>
+      <li><a href="#halloffame">Hall of Fame</a></li>
+      <li><a href="#resume-download">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-  </section>
+  </nav>
 
-  <section id="portfolio" data-aos="fade-up" data-aos-delay="200">
-    <h2>Projects & Reports</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h4>🔓 Subdomain Takeover | XYZ Corp</h4>
-        <p>Reported a vulnerable subdomain pointing to an expired S3 bucket. Demonstrated takeover and helped secure content delivery paths.</p>
+  <main>
+    <section id="about" data-aos="fade-up" tabindex="0">
+      <h2>About Me</h2>
+      <p>
+        I’m a cybersecurity researcher focused on uncovering vulnerabilities through ethical hacking, bug bounty programs, and recon automation.
+        I enjoy identifying risks before attackers can exploit them and turning findings into actionable insights.
+      </p>
+    </section>
+
+    <section id="skills" class="skills" data-aos="fade-up" data-aos-delay="100" tabindex="0">
+      <h2>Skills</h2>
+      <ul>
+        <li>🕵️ Bug Bounty Hunting & Responsible Disclosure</li>
+        <li>🔐 Web & API Penetration Testing</li>
+        <li>🧠 OSINT & Recon Automation</li>
+        <li>🐧 Linux Security & Hardening</li>
+        <li>💻 Scripting: Python, Bash, Nmap, Burp Suite</li>
+        <li>📚 Exploit Development Basics</li>
+      </ul>
+    </section>
+
+    <section id="portfolio" data-aos="fade-up" data-aos-delay="200" tabindex="0">
+      <h2>Projects & Reports</h2>
+      <div class="project-grid">
+        <div class="project-card" tabindex="0">
+          <h4>🔓 Subdomain Takeover | XYZ Corp</h4>
+          <p>
+            Reported a vulnerable subdomain pointing to an expired S3 bucket. Demonstrated takeover and helped secure content delivery paths.
+          </p>
+          <a href="https://github.com/Nexo607/subdomain-takeover" target="_blank" rel="noopener" class="cta">View Code</a>
+          <!-- Replace with your own screenshot or remove img -->
+          <img src="https://via.placeholder.com/400x200?text=Subdomain+Takeover+Demo" alt="Subdomain takeover demo screenshot" />
+        </div>
+
+        <div class="project-card" tabindex="0">
+          <h4>🌐 Recon Automation Script</h4>
+          <p>
+            Built a recon framework using Subfinder, Amass, and httpx for subdomain discovery and validation in bug bounty programs.
+          </p>
+          <a href="https://github.com/Nexo607/recon-automation" target="_blank" rel="noopener" class="cta">View Code</a>
+          <!-- Replace with your own screenshot or remove img -->
+          <img src="https://via.placeholder.com/400x200?text=Recon+Automation+Demo" alt="Recon automation demo screenshot" />
+        </div>
       </div>
-      <div class="project-card">
-        <h4>🌐 Recon Automation Script</h4>
-        <p>Built a recon framework using Subfinder, Amass, and httpx for subdomain discovery and validation in bug bounty programs.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="halloffame" class="halloffame" data-aos="fade-up">
-    <h2>🏅 Hall of Fame</h2>
-    <p>Companies I've responsibly disclosed vulnerabilities to:</p>
-    <ul>
-      <li>🛡️ Google – Subdomain Takeover</li>
-      <li>💳 PayPal – API Authorization Flaw</li>
-      <li>🏦 HSBC – Email Spoofing & Stored XSS</li>
-      <li>🎯 HackerOne Private Program – Top 10 Reporter</li>
-    </ul>
-  </section>
+    <section id="halloffame" class="halloffame" data-aos="fade-up" tabindex="0">
+      <h2>🏅 Hall of Fame</h2>
+      <p>Companies I've responsibly disclosed vulnerabilities to:</p>
+      <ul>
+        <li>🛡️ Google – Subdomain Takeover</li>
+        <li>💳 PayPal – API Authorization Flaw</li>
+        <li>🏦 HSBC – Email Spoofing & Stored XSS</li>
+        <li>🎯 HackerOne Private Program – Top 10 Reporter</li>
+      </ul>
+    </section>
 
-  <section id="resume-download" data-aos="fade-up">
-    <h2>📄 Resume</h2>
-    <p>You can download my complete CV including projects and disclosures:</p>
-    <a href="Prince_Gupta_Cybersecurity_CV.pdf" class="cta" download>Download Resume</a>
-  </section>
+    <section id="resume-download" data-aos="fade-up" tabindex="0">
+      <h2>📄 Resume</h2>
+      <p>You can download my complete CV including projects and disclosures:</p>
+      <a href="Prince_Gupta_Cybersecurity_CV.pdf" download class="cta">Download Resume</a>
+    </section>
 
-  <section id="contact" class="contact" data-aos="fade-up" data-aos-delay="300">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:princegupta87794@gmail.com">princegupta87794@gmail.com</a></p>
-    <p>GitHub: <a href="https://github.com/princegupta" target="_blank">github.com/princegupta</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/YOUR-LINK" target="_blank">linkedin.com/in/YOUR-LINK</a></p>
-  </section>
+    <section id="contact" class="contact" data-aos="fade-up" data-aos-delay="300" tabindex="0">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:princegupta87794@gmail.com">princegupta87794@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/Nexo607" target="_blank" rel="noopener">github.com/Nexo607</a></p>
+      <p>LinkedIn: <a href="https://linkedin.com/in/princegupta" target="_blank" rel="noopener">linkedin.com/in/princegupta</a></p>
+    </section>
+  </main>
 
   <footer>
     <p>Connect with me:</p>
     <p>
-      <a href="mailto:princegupta87794@gmail.com">Email</a> |
-      <a href="https://github.com/princegupta" target="_blank">GitHub</a> |
-      <a href="https://linkedin.com/in/YOUR-LINK" target="_blank">LinkedIn</a>
+      <a href="mailto:princegupta87794@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://github.com/Nexo607" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/princegupta" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </p>
-    <p style="margin-top: 10px;">© 2025 Prince Gupta • 💻 & ☕</p> •
+    <p>© 2025 Prince Gupta • 💻 & ☕</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.net.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
   <script>
+    // Initialize Vanta.NET animated background
     VANTA.NET({
       el: "#vanta-bg",
       color: 0x00ffff,
       backgroundColor: 0x000000,
       points: 12.0,
       maxDistance: 20.0,
-      spacing: 18.0
+      spacing: 18.0,
     });
+
+    // Initialize Animate on Scroll
     AOS.init();
   </script>
 </body>
